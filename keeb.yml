@@ -1,0 +1,54 @@
+units:
+  # Proxy Keycap Spacing
+  kx: cx
+  ky: cy
+  # Padded Keycap Spacing
+  px: cx + 2 # 20 width
+  py: cy + 2 # 19 height on flat 2d
+points:
+  zones:
+    main:
+      key:
+        padding: ky # vertical
+        spread: kx # horizontal
+        width: kx # for preview
+        height: ky # for preview
+      columns:
+        outer:
+          rows.mod.skip: true
+        pinky:
+          rows.mod.skip: true
+        ring:
+          key.stagger: 4.9
+        middle:
+          key.stagger: 2.5
+        index:
+          key.stagger: -2.5
+        inner:
+          key.stagger: -2.5
+          rows.mod.skip: true
+      rows:
+        mod:
+        bottom:
+        home:
+        top:
+        num:
+    thumbs:
+      key:
+        padding: ky
+        spread: kx
+        width: kx
+        height: ky
+      anchor:
+        ref: main_inner_mod
+        shift: [2.5, -2.5]
+      columns:
+        layer:
+          key.splay: -15
+        space:
+          key.splay: -15
+          key.shift: [2, 2]
+          key.width: 1.5kx
+          key.rotate: 90
+      rows:
+        cluster:

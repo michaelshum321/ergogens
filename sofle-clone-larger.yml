@@ -3,8 +3,8 @@ units:
   kx: cx
   ky: cy
   # Padded Keycap Spacing
-  px: cx + 2 # 20 width
-  py: cy + 2 # 19 height on flat 2d
+  px: cx + 3 # 21 width
+  py: cy + 3 # 20 height on flat 2d
 points:
   zones:
     main:
@@ -47,8 +47,43 @@ points:
           key.splay: -15
         space:
           key.splay: -15
-          key.shift: [2, 2]
+          key.shift: [2.5, 3]
           key.width: 1.5kx
-          key.rotate: 90
+          key.rotate: -90
       rows:
         cluster:
+outlines:
+  outline:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.1, ky-0.1]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: main_outer_num
+          shift: [-0.5px, 0.5py]
+        - ref: main_ring_num
+          shift: [-0.5px, 0.5py]
+        - ref: main_middle_num
+          shift: [-0.5px, 0.5py]
+        - ref: main_middle_num
+          shift: [0.5px, 0.5py]
+        - ref: main_middle_num
+          shift: [3.75px, 0.5py]
+        - ref: main_middle_num
+          shift: [3.75px, -5py]
+        - ref: main_ring_mod
+          shift: [-0.5px, -0.5py]
+        - ref: main_outer_bottom
+          shift: [-0.5px, -0.5py]
+      fillet: 2
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+

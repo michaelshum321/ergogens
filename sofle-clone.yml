@@ -3,8 +3,8 @@ units:
   kx: cx
   ky: cy
   # Padded Keycap Spacing
-  px: cx + 3 # 21 width
-  py: cy + 3 # 20 height on flat 2d
+  px: cx + 2 # 21 width
+  py: cy + 2 # 20 height on flat 2d
 points:
   zones:
     main:
@@ -53,15 +53,15 @@ points:
       rows:
         cluster:
 outlines:
-  outline:
+  outline: # idk tbh
     - what: rectangle
       where: true
       size: [px, py]
-  keys:
+  keys: # key overlaps
     - what: rectangle
       where: true
       size: [kx-0.1, ky-0.1]
-  board:
+  board: # PCB Board outline
     - what: polygon
       operation: stack
       points:
@@ -69,8 +69,8 @@ outlines:
           shift: [-0.5px, 0.5py]
         - ref: main_middle_num
           shift: [-0.5px, 0.6py]
-        - ref: main_middle_num
-          shift: [3.25px, 0.25py]
+        - ref: main_inner_num
+          shift: [1.5px, 0.625py]
         - ref: main_inner_bottom
           shift: [1.5px, -0.25py]
         - ref: thumbs_space_cluster

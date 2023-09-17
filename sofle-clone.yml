@@ -8,6 +8,8 @@ units:
 points:
   zones:
     main:
+      anchor: # to show PCB in KiCad
+        shift: [100, 100]
       key:
         padding: ky # vertical
         spread: kx # horizontal
@@ -87,4 +89,33 @@ outlines:
     - name: board
     - operation: subtract
       name: keys
-
+pcbs:
+  main_pcb:
+    outlines:
+      main:
+        outline:
+          board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{col_row}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{col_row}}"
+          to: "{{column_net}}"
+        adjust:
+          shift: [0, -5]
+      promicro:
+        what: promicro
+        where:
+          ref: main_inner_num
+          shift: [1kx+1, -8]
+          rotate: -90

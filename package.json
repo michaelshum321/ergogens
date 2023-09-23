@@ -1,0 +1,20 @@
+{
+  "name": "stuffs",
+  "version": "1.0.0",
+  "description": "Ergogen Configs for funsies",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx ergogen sofle-clone.yml"
+  },
+  "keywords": [
+    "ergogen",
+    "keeb",
+    "ortho",
+    "sofle"
+  ],
+  "author": "michaelshum321",
+  "license": "ISC",
+  "dependencies": {
+    "ergogen": "^4.0.4"
+  }
+}

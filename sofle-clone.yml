@@ -126,5 +126,14 @@ pcbs:
           SCL: P3
         where:
           ref: main_inner_num
-          shift: [1px + 5, -24]
+          shift: [1kx+1, -8] # where does this go
+          rotate: -90
+      reset:
+        what: button
+        params:
+          from: GND
+          to: RST
+        where:
+          ref: main_inner_num
+          shift: [1kx + 1, -35]
           rotate: -90

@@ -136,14 +136,14 @@ pcbs:
           ref: main_inner_num
           shift: [1kx+1, -8]
           rotate: -90
-      oled: # TODO: what even is this
+      oled:
         what: oled
         params:
-          SDA: P2
-          SCL: P3
+          SDA: P2 # I2C SDA
+          SCL: P3 # I2C SCL
         where:
           ref: main_inner_num
-          shift: [1kx+1, -8] # where does this go
+          shift: [1kx-5, -27]
           rotate: 90
       reset:
         what: button
@@ -152,5 +152,15 @@ pcbs:
           to: RST
         where:
           ref: main_inner_num
-          shift: [1kx + 1, -35]
+          shift: [1kx + 1, -31]
+      trrs:
+        what: trrs
+        params:
+          A: P1 # UART0 Serial TX Top left on back
+          B: VCC
+          C: GND
+          D: P0 # UART0 Serial RX Top left, under P1 (yes P0 is under P1)
+        where:
+          ref: main_inner_num
+          shift: [1kx + 9, -42]
           rotate: -90

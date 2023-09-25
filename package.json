@@ -4,7 +4,7 @@
   "description": "Ergogen Configs for funsies",
   "main": "index.js",
   "scripts": {
-    "build": "npx ergogen sofle-clone.yml"
+    "build": "npx ergogen sofle-clone"
   },
   "keywords": [
     "ergogen",

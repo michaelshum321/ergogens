@@ -116,12 +116,22 @@ pcbs:
       choc_hotswap:
         what: choc
         where: true
+        adjust:
+          rotate: 180
         params:
           keycaps: true
           reverse: false
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
+      rgb:
+        what: rgb
+        where: true
+        adjust:
+          shift: [0, 4.5]
+        params:
+          din: P1 # TODO
+          dout: P2 # TODO
       diode:
         what: diode
         where: true
@@ -129,7 +139,8 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, -5]
+          shift: [7.5, 0]
+          rotate: 90
       promicro:
         what: promicro
         where:

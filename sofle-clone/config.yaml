@@ -17,27 +17,114 @@ points:
         height: ky # for preview
       columns:
         outer:
-          rows.mod.skip: true
           key.column_net: P14
+          rows:
+            mod.skip: true
+            bottom.key:
+              led_prev: LED_25
+              led_next: LED_26
+            home.key:
+              led_prev: LED_26
+              led_next: LED_27
+            top.key:
+              led_prev: LED_27
+              led_next: LED_28
+            num.key: # Last key goes nowhere I guess
+              led_prev: LED_28
+              led_next: LED_29
         pinky:
-          rows.mod.skip: true
           key.column_net: P16
+          rows:
+            mod.skip: true
+            num.key:
+              led_prev: LED_21
+              led_next: LED_22
+            top.key:
+              led_prev: LED_22
+              led_next: LED_23
+            home.key:
+              led_prev: LED_23
+              led_next: LED_24
+            bottom.key:
+              led_prev: LED_24
+              led_next: LED_25
         ring:
           key.stagger: 4.9
           key.column_net: P10
-          rows.mod.column_net: P16
+          rows:
+            mod.column_net: P16
+            mod.key:
+              led_prev: LED_16
+              led_next: LED_17
+            bottom.key:
+              led_prev: LED_17
+              led_next: LED_18
+            home.key:
+              led_prev: LED_18
+              led_next: LED_19
+            top.key:
+              led_prev: LED_19
+              led_next: LED_20
+            num.key:
+              led_prev: LED_20
+              led_next: LED_21
         middle:
           key.stagger: 2.5
           key.column_net: P7
-          rows.mod.column_net: P10
+          rows:
+            mod.column_net: P10
+            num.key:
+              led_prev: LED_11
+              led_next: LED_12
+            top.key:
+              led_prev: LED_12
+              led_next: LED_13
+            home.key:
+              led_prev: LED_13
+              led_next: LED_14
+            bottom.key:
+              led_prev: LED_14
+              led_next: LED_15
+            mod.key:
+              led_prev: LED_15
+              led_next: LED_16
         index:
           key.stagger: -2.5
           key.column_net: P8
-          rows.mod.column_net: P7
+          rows:
+            mod.column_net: P7
+            mod.key:
+              led_prev: LED_6
+              led_next: LED_7
+            bottom.key:
+              led_prev: LED_7
+              led_next: LED_8
+            home.key:
+              led_prev: LED_8
+              led_next: LED_9
+            top.key:
+              led_prev: LED_9
+              led_next: LED_10
+            num.key:
+              led_prev: LED_10
+              led_next: LED_11
         inner:
           key.stagger: -2.5
           key.column_net: P9
-          rows.mod.skip: true
+          rows:
+            mod.skip: true
+            num.key:
+              led_prev: P0
+              led_next: LED_1
+            top.key:
+              led_prev: LED_1
+              led_next: LED_2
+            home.key:
+              led_prev: LED_2
+              led_next: LED_3
+            bottom.key:
+              led_prev: LED_3
+              led_next: LED_4
       rows:
         mod:
           row_net: P15
@@ -62,12 +149,20 @@ points:
         layer:
           key.splay: -15
           key.column_net: P8
+          rows:
+            cluster.key:
+              led_prev: LED_5
+              led_next: LED_6
         space: # TODO: tut uses 75 splay with neg y shift, no rotate
           key.splay: -15
           key.shift: [2.5, 3]
           key.width: 1.5kx
           key.rotate: -90
           key.column_net: P9
+          rows:
+            cluster.key:
+              led_prev: LED_4
+              led_next: LED_5
       rows:
         cluster:
           row_net: P15
@@ -130,8 +225,8 @@ pcbs:
         adjust:
           shift: [0, 4.5]
         params:
-          din: P1 # TODO
-          dout: P2 # TODO
+          din: "{{key.led_prev}}"
+          dout: "{{key.led_next}}"
       diode:
         what: diode
         where: true

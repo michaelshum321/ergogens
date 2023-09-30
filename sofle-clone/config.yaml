@@ -225,6 +225,8 @@ pcbs:
         adjust:
           shift: [0, 4.5]
         params:
+          reversible: true
+          reverse_mount: true
           P2: "{{key.led_next}}"
           P4: "{{key.led_prev}}"
       diode:

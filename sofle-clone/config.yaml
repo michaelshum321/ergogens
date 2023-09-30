@@ -234,7 +234,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
           include_tht: false
-          # reversible: true
+          reversible: true
         adjust:
           shift: [7.5, 0]
           rotate: 90

@@ -215,7 +215,7 @@ pcbs:
           rotate: 180
         params:
           keycaps: true
-          reverse: false
+          reverse: true
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"

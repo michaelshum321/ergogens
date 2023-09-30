@@ -4,7 +4,9 @@
   "description": "Ergogen Configs for funsies",
   "main": "index.js",
   "scripts": {
-    "build": "npx ergogen sofle-clone"
+    "build": "npx ergogen sofle-clone",
+    "bo": "yarn build && open -a pcbnew output/pcbs/main_pcb.kicad_pcb",
+    "build-open": "yarn bo"
   },
   "keywords": [
     "ergogen",

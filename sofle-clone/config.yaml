@@ -238,8 +238,8 @@ pcbs:
           include_tht: false
           reversible: true
         adjust:
-          shift: [7.5, 0]
-          rotate: 90
+          shift: [6, 4]
+          rotate: -90
       promicro:
         what: promicro
         where:

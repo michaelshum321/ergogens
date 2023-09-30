@@ -220,19 +220,21 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}"
       rgb:
-        what: rgb
+        what: sk6812mini-e
         where: true
         adjust:
           shift: [0, 4.5]
         params:
-          din: "{{key.led_prev}}"
-          dout: "{{key.led_next}}"
+          P2: "{{key.led_next}}"
+          P4: "{{key.led_prev}}"
       diode:
-        what: diode
+        what: combo-diode
         where: true
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
+          include_tht: false
+          # reversible: true
         adjust:
           shift: [7.5, 0]
           rotate: 90

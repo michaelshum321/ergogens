@@ -240,36 +240,40 @@ pcbs:
         adjust:
           shift: [6, 4]
           rotate: -90
-      promicro:
+      promicro: # TODO - Wire up after putting in ProMicroAX
         what: promicro
         where:
           ref: main_inner_num
           shift: [1kx+1, -8]
           rotate: -90
-      oled:
-        what: oled
+      oled: # TODO: Wire these up after putting in ProMicroAX
+        what: combo-display
         params:
-          SDA: P2 # I2C SDA
-          SCL: P3 # I2C SCL
+          oled: 'ssd1306'
+          reversible: true
+          P1: VDD
+          P4: P2 # I2C SDA
+          P3: P3 # I2C SCL
         where:
           ref: main_inner_num
-          shift: [1kx-5, -27]
-          rotate: 90
-      reset:
-        what: button
-        params:
-          from: GND
-          to: RST
-        where:
-          ref: main_inner_num
-          shift: [1kx + 1, -31]
-      trrs:
+          shift: [1kx+1, -25]
+      # reset: ## TODO - is this needed?
+      #   what: button
+      #   params:
+      #     from: GND
+      #     to: RST
+      #   where:
+      #     ref: main_inner_num
+      #     shift: [1kx + 1, -31]
+      trrs: # TODO: Wire these up after putting in ProMicroAX
         what: trrs
         params:
-          A: P1 # UART0 Serial TX Top left on back
-          B: VCC
-          C: GND
-          D: P0 # UART0 Serial RX Top left, under P1 (yes P0 is under P1)
+          reverse: true
+          symmetric: true
+          A: VDD # Note - only supports Serial, not I2C
+          B: VDD
+          C: P1
+          D: GND
         where:
           ref: main_inner_num
           shift: [1kx + 9, -42]

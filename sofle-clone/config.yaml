@@ -240,23 +240,29 @@ pcbs:
         adjust:
           shift: [6, 4]
           rotate: -90
-      promicro: # TODO - Wire up after putting in ProMicroAX
-        what: promicro
+      # promicro: # TODO - Wire up after putting in ProMicroAX
+      #   what: promicro
+      #   where:
+      #     ref: main_inner_num
+      #     shift: [1kx+1, -8]
+      #     rotate: -90
+      promicro2: # TODO - Wire up after putting in ProMicroAX
+        what: promicro-ax
         where:
           ref: main_inner_num
           shift: [1kx+1, -8]
           rotate: -90
-      oled: # TODO: Wire these up after putting in ProMicroAX
-        what: combo-display
-        params:
-          oled: 'ssd1306'
-          reversible: true
-          P1: VDD
-          P4: P2 # I2C SDA
-          P3: P3 # I2C SCL
-        where:
-          ref: main_inner_num
-          shift: [1kx+1, -25]
+      # oled: # TODO: Wire these up after putting in ProMicroAX
+      #   what: combo-display
+      #   params:
+      #     oled: 'ssd1306'
+      #     reversible: true
+      #     P1: VDD
+      #     P4: P2 # I2C SDA
+      #     P3: P3 # I2C SCL
+      #   where:
+      #     ref: main_inner_num
+      #     shift: [1kx+1, -25]
       # reset: ## TODO - is this needed?
       #   what: button
       #   params:

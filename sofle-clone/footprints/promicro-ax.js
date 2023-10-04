@@ -100,11 +100,14 @@ module.exports = {
       (pad P23 thru_hole circle (at 12.7 ${neg}7.62 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.P23.str})
 
       (pad P9 thru_hole circle (at 15.24 ${pos}7.62 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.P9.str})
+      ${'' /*
+      These are removed to make the footprint reversible.
       (pad P12 thru_hole circle (at 15.24 ${pos}5.08 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.P12.str})
       (pad P13 thru_hole circle (at 15.24 ${pos}2.54 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.P13.str})
       (pad P14 thru_hole circle (at 15.24 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.P14.str})
       (pad P15 thru_hole circle (at 15.24 ${neg}2.54 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.P15.str})
       (pad P16 thru_hole circle (at 15.24 ${neg}5.08 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.P16.str})
+      */}
       (pad P21 thru_hole circle (at 15.24 ${neg}7.62 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.P21.str})
       )
     `;

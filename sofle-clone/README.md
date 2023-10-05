@@ -35,6 +35,7 @@ For Vcc Lines, the same components above should use 5V.
     * Use I2C1?
     * Something near bottom?
 
+![Used pin](doc_images/RP2040ProMicroFoot.png)
 ### Pinout Reference
 ![boink](doc_images/pinout.png)
 

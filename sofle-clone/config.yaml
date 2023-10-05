@@ -17,7 +17,7 @@ points:
         height: ky # for preview
       columns:
         outer:
-          key.column_net: P14
+          key.column_net: P22
           rows:
             mod.skip: true
             bottom.key:
@@ -33,7 +33,7 @@ points:
               led_prev: LED_28
               led_next: LED_29
         pinky:
-          key.column_net: P16
+          key.column_net: P26
           rows:
             mod.skip: true
             num.key:
@@ -50,9 +50,9 @@ points:
               led_next: LED_25
         ring:
           key.stagger: 4.9
-          key.column_net: P10
+          key.column_net: P27
           rows:
-            mod.column_net: P16
+            mod.column_net: P26
             mod.key:
               led_prev: LED_16
               led_next: LED_17
@@ -70,9 +70,9 @@ points:
               led_next: LED_21
         middle:
           key.stagger: 2.5
-          key.column_net: P7
+          key.column_net: P28
           rows:
-            mod.column_net: P10
+            mod.column_net: P27
             num.key:
               led_prev: LED_11
               led_next: LED_12
@@ -90,9 +90,9 @@ points:
               led_next: LED_16
         index:
           key.stagger: -2.5
-          key.column_net: P8
+          key.column_net: P29
           rows:
-            mod.column_net: P7
+            mod.column_net: P28
             mod.key:
               led_prev: LED_6
               led_next: LED_7
@@ -110,11 +110,11 @@ points:
               led_next: LED_11
         inner:
           key.stagger: -2.5
-          key.column_net: P9
+          key.column_net: P11
           rows:
             mod.skip: true
             num.key:
-              led_prev: P0
+              led_prev: P7 # This pin connects to the MCU for LED signal
               led_next: LED_1
             top.key:
               led_prev: LED_1
@@ -127,15 +127,15 @@ points:
               led_next: LED_4
       rows:
         mod:
-          row_net: P15
+          row_net: P6
         bottom:
-          row_net: P18
+          row_net: P5
         home:
-          row_net: P19
+          row_net: P4
         top:
-          row_net: P20
+          row_net: P3
         num:
-          row_net: P21
+          row_net: P2
     thumbs:
       key:
         padding: ky
@@ -148,7 +148,7 @@ points:
       columns:
         layer:
           key.splay: -15
-          key.column_net: P8
+          key.column_net: P29
           rows:
             cluster.key:
               led_prev: LED_5
@@ -158,7 +158,7 @@ points:
           key.shift: [2.5, 3]
           key.width: 1.5kx
           key.rotate: -90
-          key.column_net: P9
+          key.column_net: P11
           rows:
             cluster.key:
               led_prev: LED_4
@@ -215,7 +215,7 @@ pcbs:
           rotate: 180
         params:
           keycaps: true
-          reverse: true
+          # reverse: true
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
@@ -225,7 +225,7 @@ pcbs:
         adjust:
           shift: [0, 4.5]
         params:
-          reversible: true
+          # reversible: true
           reverse_mount: true
           P2: "{{key.led_next}}"
           P4: "{{key.led_prev}}"
@@ -236,7 +236,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
           include_tht: false
-          reversible: true
+          # reversible: true
         adjust:
           shift: [6, 4]
           rotate: -90
@@ -252,22 +252,22 @@ pcbs:
           ref: main_inner_num
           shift: [1kx+1, -8]
           rotate: -90
-      promicro2-back: # TODO - Wire up after putting in ProMicroAX
-        what: promicro-ax
-        where:
-          ref: main_inner_num
-          shift: [1kx+2.68, -6.73] # -8 + 2.54/2
-          rotate: -90
-        params:
-          side: 'B'
+      # promicro2-back: # TODO - Wire up after putting in ProMicroAX
+      #   what: promicro-ax
+      #   where:
+      #     ref: main_inner_num
+      #     shift: [1kx+2.68, -6.73] # -8 + 2.54/2
+      #     rotate: -90
+      #   params:
+      #     side: 'B'
       # oled: # TODO: Wire these up after putting in ProMicroAX
       #   what: combo-display
       #   params:
       #     oled: 'ssd1306'
       #     reversible: true
       #     P1: VDD
-      #     P4: P2 # I2C SDA
-      #     P3: P3 # I2C SCL
+      #     P4: P20 # I2C SDA  TODO: Check this matches up with OLED!!
+      #     P3: P21 # I2C SCL
       #   where:
       #     ref: main_inner_num
       #     shift: [1kx+1, -25]
@@ -282,11 +282,11 @@ pcbs:
       trrs: # TODO: Wire these up after putting in ProMicroAX
         what: trrs
         params:
-          reverse: true
-          symmetric: true
+          # reverse: true
+          # symmetric: true
           A: VDD # Note - only supports Serial, not I2C
           B: VDD
-          C: P1
+          C: P8 # UART1 TX bottom left
           D: GND
         where:
           ref: main_inner_num

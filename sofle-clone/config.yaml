@@ -165,7 +165,7 @@ points:
               led_next: LED_5
       rows:
         cluster:
-          row_net: P15
+          row_net: P6
 outlines:
   outline: # idk tbh
     - what: rectangle

@@ -5,6 +5,10 @@ units:
   # Padded Keycap Spacing
   px: cx + 2 # 21 width
   py: cy + 2 # 20 height on flat 2d
+  mcu_offset_x: 0.4
+  mcu_offset_y: -8
+  r_mcu_offset_x: 1.68
+  r_mcu_offset_y: 1.27
 points:
   zones:
     main:
@@ -153,7 +157,7 @@ points:
             cluster.key:
               led_prev: LED_5
               led_next: LED_6
-        space: # TODO: tut uses 75 splay with neg y shift, no rotate
+        space:
           key.splay: -15
           key.shift: [2.5, 3]
           key.width: 1.5kx
@@ -244,7 +248,7 @@ pcbs:
         what: promicro-ax
         where:
           ref: main_inner_num
-          shift: [1kx+0.4, -8]
+          shift: [1kx+mcu_offset_x, mcu_offset_y]
           rotate: -90
       promicro2-back:
         what: promicro-ax
@@ -252,7 +256,7 @@ pcbs:
           ref: main_inner_num
           # X: + 1.68 to get THT to clear DRC
           # Y: -8 + 2.54/2
-          shift: [1kx+1.68+0.4, -6.73] # -8 + 2.54/2
+          shift: [1kx+mcu_offset_x+r_mcu_offset_x, mcu_offset_y+r_mcu_offset_y] # -8 + 2.54/2
           rotate: -90
         params:
           side: 'B'
@@ -275,7 +279,7 @@ pcbs:
       #   where:
       #     ref: main_inner_num
       #     shift: [1kx + 1, -31]
-      trrs: # TODO: Wire these up after putting in ProMicroAX
+      trrs:
         what: trrs
         params:
           reverse: true

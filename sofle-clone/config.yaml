@@ -178,15 +178,15 @@ outlines:
   board: # PCB Board outline
     - what: polygon
       operation: stack
-      points:
+      points: # need 1.7 extra on X for PCB Width
         - ref: main_outer_num
           shift: [-0.5px, 0.5py]
         - ref: main_middle_num
           shift: [-0.5px, 0.6py]
         - ref: main_inner_num
-          shift: [1.5px, 0.625py]
+          shift: [1.5px + 1.7, 0.625py]
         - ref: main_inner_bottom
-          shift: [1.5px, -0.25py]
+          shift: [1.5px + 1.7, -0.25py]
         - ref: thumbs_space_cluster
           shift: [-0.5px, 0.5py]
         - ref: thumbs_space_cluster
@@ -240,26 +240,22 @@ pcbs:
         adjust:
           shift: [-7.8, 3.8]
           rotate: -90
-      # promicro: # TODO - Wire up after putting in ProMicroAX
-      #   what: promicro
-      #   where:
-      #     ref: main_inner_num
-      #     shift: [1kx+1, -8]
-      #     rotate: -90
-      promicro2: # TODO - Wire up after putting in ProMicroAX
+      promicro2:
         what: promicro-ax
         where:
           ref: main_inner_num
-          shift: [1kx, -8]
+          shift: [1kx+0.4, -8]
           rotate: -90
-      # promicro2-back: # TODO - Wire up after putting in ProMicroAX
-      #   what: promicro-ax
-      #   where:
-      #     ref: main_inner_num
-      #     shift: [1kx+1.68, -6.73] # -8 + 2.54/2
-      #     rotate: -90
-      #   params:
-      #     side: 'B'
+      promicro2-back:
+        what: promicro-ax
+        where:
+          ref: main_inner_num
+          # X: + 1.68 to get THT to clear DRC
+          # Y: -8 + 2.54/2
+          shift: [1kx+1.68+0.4, -6.73] # -8 + 2.54/2
+          rotate: -90
+        params:
+          side: 'B'
       # oled: # TODO: Wire these up after putting in ProMicroAX
       #   what: combo-display
       #   params:

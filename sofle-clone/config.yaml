@@ -278,12 +278,12 @@ pcbs:
       trrs: # TODO: Wire these up after putting in ProMicroAX
         what: trrs
         params:
-          # reverse: true
-          # symmetric: true
+          reverse: true
+          symmetric: true
           A: P8 # Note - only supports Serial, not I2C
-          B: GND
+          B: P8
           C: VDD # UART1 TX bottom left
-          D: VDD
+          D: GND
         where:
           ref: main_inner_num
           shift: [1kx + 9, -42]

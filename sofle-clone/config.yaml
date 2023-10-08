@@ -9,7 +9,7 @@ points:
   zones:
     main:
       anchor: # to show PCB in KiCad
-        shift: [100, 100]
+        shift: [150, -200]
       key:
         padding: ky # vertical
         spread: kx # horizontal
@@ -235,10 +235,10 @@ pcbs:
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
-          include_tht: false
+          include_tht: true
           # reversible: true
         adjust:
-          shift: [6, 4]
+          shift: [-7.8, 3.8]
           rotate: -90
       # promicro: # TODO - Wire up after putting in ProMicroAX
       #   what: promicro
@@ -250,13 +250,13 @@ pcbs:
         what: promicro-ax
         where:
           ref: main_inner_num
-          shift: [1kx+1, -8]
+          shift: [1kx, -8]
           rotate: -90
       # promicro2-back: # TODO - Wire up after putting in ProMicroAX
       #   what: promicro-ax
       #   where:
       #     ref: main_inner_num
-      #     shift: [1kx+2.68, -6.73] # -8 + 2.54/2
+      #     shift: [1kx+1.68, -6.73] # -8 + 2.54/2
       #     rotate: -90
       #   params:
       #     side: 'B'
@@ -284,10 +284,10 @@ pcbs:
         params:
           # reverse: true
           # symmetric: true
-          A: VDD # Note - only supports Serial, not I2C
-          B: VDD
-          C: P8 # UART1 TX bottom left
-          D: GND
+          A: P8 # Note - only supports Serial, not I2C
+          B: GND
+          C: VDD # UART1 TX bottom left
+          D: VDD
         where:
           ref: main_inner_num
           shift: [1kx + 9, -42]

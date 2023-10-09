@@ -12,6 +12,7 @@ units:
   # -8 + 2.54/2
   r_mcu_offset_x: 1.68
   r_mcu_offset_y: 1.27
+  oled_offset_y: -25
 points:
   zones:
     main:
@@ -216,7 +217,7 @@ pcbs:
           board
     footprints:
       choc_hotswap:
-        what: choc
+        what: choc-wired
         where: true
         adjust:
           rotate: 180
@@ -234,6 +235,7 @@ pcbs:
         params:
           reversible: true
           reverse_mount: true
+          P1: RAW
           P2: "{{key.led_next}}"
           P4: "{{key.led_prev}}"
       diode:
@@ -262,17 +264,30 @@ pcbs:
           rotate: -90
         params:
           side: 'B'
-      # oled: # TODO: Wire these up after putting in ProMicroAX
-      #   what: combo-display
-      #   params:
-      #     oled: 'ssd1306'
-      #     reversible: true
-      #     P1: VDD
-      #     P4: P20 # I2C SDA  TODO: Check this matches up with OLED!!
-      #     P3: P21 # I2C SCL
-      #   where:
-      #     ref: main_inner_num
-      #     shift: [1kx+1, -25]
+      oled: # TODO: position this better. consider making a footprint where middle is 0?? or where there is silkscreen
+        what: oled
+        params:
+          side: 'F'
+          VCC: RAW
+          # TODO: Confirm this is correct
+          SDA: P20 # I2C SDA
+          SCL: P21 # I2C SCL
+        where:
+          ref: main_inner_num
+          shift: [1kx+6+mcu_offset_x, oled_offset_y]
+          rotate: -90
+      oled-back:
+        what: oled
+        params:
+          side: 'B'
+          VCC: RAW
+          # TODO: Confirm this is correct
+          SDA: P20 # I2C SDA
+          SCL: P21 # I2C SCL
+        where:
+          ref: main_inner_num
+          shift: [1kx+6+mcu_offset_x+r_mcu_offset_y, oled_offset_y + r_mcu_offset_x]
+          rotate: -90
       # reset: ## TODO - is this needed?
       #   what: button
       #   params:

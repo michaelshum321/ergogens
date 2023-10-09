@@ -24,7 +24,6 @@ module.exports = {
         const viaXOffset = 1.5; // either +1 or -1, depending on from / to
 
         const getPosition = (x, y) => {
-
             // (at 229.8 191.3 0)
             const splitRaw = p.at.split(' ').slice(1,4);
             // we care about 2, 3, 4 (if 4 is there?)
@@ -42,6 +41,9 @@ module.exports = {
             const point_str = `${nx.toFixed(2)} ${ny.toFixed(2)}`;
             return point_str;
         }
+        const newSegment = (start, end, width, layer, net) => `(segment (start ${getPosition(start[0], start[1])}) (end ${getPosition(end[0], end[1])}) (width ${width}) (layer ${layer}.Cu) (net ${net}))`
+
+
         const standard_opening = `
         (module ComboDiode (layer ${p.side}.Cu) (tedit 5B24D78E)
             ${p.at /* parametric position */}
@@ -72,7 +74,6 @@ module.exports = {
         const standard_closing = `
         )
         `
-        const newSegment = (start, end, width, layer, net) => `(segment (start ${getPosition(start[0], start[1])}) (end ${getPosition(end[0], end[1])}) (width ${width}) (layer ${layer}.Cu) (net ${net}))`
 
         const via = `
             (via (at ${getPosition(toX - viaXOffset, 0)}) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net ${p.to.index}))

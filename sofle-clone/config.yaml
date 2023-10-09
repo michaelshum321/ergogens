@@ -5,8 +5,11 @@ units:
   # Padded Keycap Spacing
   px: cx + 2 # 21 width
   py: cy + 2 # 20 height on flat 2d
-  mcu_offset_x: 0.4
+  mcu_offset_x: 0.6
   mcu_offset_y: -8
+  # X: + 1.68 to get THT to clear DRC
+  # Y: -8 + 2.54/2
+  # -8 + 2.54/2
   r_mcu_offset_x: 1.68
   r_mcu_offset_y: 1.27
 points:
@@ -186,7 +189,7 @@ outlines:
         - ref: main_outer_num
           shift: [-0.5px, 0.5py]
         - ref: main_middle_num
-          shift: [-0.5px, 0.6py]
+          shift: [-0.5px, 0.7py]
         - ref: main_inner_num
           shift: [1.5px + 1.7, 0.625py]
         - ref: main_inner_bottom
@@ -219,7 +222,7 @@ pcbs:
           rotate: 180
         params:
           keycaps: true
-          # reverse: true
+          reverse: true
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
@@ -239,10 +242,11 @@ pcbs:
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
-          include_tht: true
-          # reversible: true
+          include_via: true
+          include_via_traces: true
+          reversible: true
         adjust:
-          shift: [-7.8, 3.8]
+          shift: [7.4, 3.8]
           rotate: -90
       promicro2:
         what: promicro-ax
@@ -254,9 +258,7 @@ pcbs:
         what: promicro-ax
         where:
           ref: main_inner_num
-          # X: + 1.68 to get THT to clear DRC
-          # Y: -8 + 2.54/2
-          shift: [1kx+mcu_offset_x+r_mcu_offset_x, mcu_offset_y+r_mcu_offset_y] # -8 + 2.54/2
+          shift: [1kx+mcu_offset_x+r_mcu_offset_x, mcu_offset_y+r_mcu_offset_y]
           rotate: -90
         params:
           side: 'B'

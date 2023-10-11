@@ -51,6 +51,25 @@ module.exports = {
         return point_str;
       }
 
+      // args: { type: 'trace', dx, dy, side}, {type: 'via'}
+      function fn([startX, startY], net, ...args) {
+        let x = startX;
+        let y = startY;
+        let output = '';
+
+        args.forEach((curr) => {
+          if (curr.type === 'trace') {
+            output += newSegment([x, y], [x+(curr.dx ?? 0), y+(curr.dy ?? 0)], 0.25, curr.side, net);
+            x += curr.dx ?? 0;
+            y += curr.dy ?? 0;
+          } else if (curr.type === 'via') {
+            output += newVia([x, y], 0.8, 0.4, p.from.index);
+          }
+          output += '\n';
+        });
+        return output;
+      }
+
       const standard = `
         (module PG1350 (layer F.Cu) (tedit 5DD50112)
         ${p.at /* parametric position */}
@@ -103,53 +122,32 @@ module.exports = {
         }
       }
       if(p.reverse) {
-        // final += newSegment([fromX + viaXOffset, fromY], [fromX, fromY], 0.25, 'F', p.to.index)
-        // final += newSegment([toX - viaXOffset, toY], [toX, toY], 0.25, 'F', p.from.index)
-        // (via (at ${getPosition(toX - viaXOffset, 0)}) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net ${p.to.index}))
-        // (via  (at ${getPosition(fromX + viaXOffset, 0)}) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net ${p.from.index}))
-        // TODO: Consider something where you can compose segments and vias through offsets
-        // args: { type: 'trace', dx, dy, side}, {type: 'via'}
-        function fn([startX, startY], ...args) {
-          let x = startX;
-          let y = startY;
-          let output = '';
-
-          args.forEach((curr) => {
-            if (curr.type === 'trace') {
-              output += newSegment([x, y], [x+(curr.dx ?? 0), y+(curr.dy ?? 0)], 0.25, curr.side, p.from.index);
-              x += curr.dx ?? 0;
-              y += curr.dy ?? 0;
-            } else if (curr.type === 'via') {
-              output += newVia([x, y], 0.8, 0.4, p.from.index);
-            }
-            output += '\n';
-          });
-          return output;
-        }
-        return `
+        let output =  `
           ${standard}
           ${p.keycaps ? keycap : ''}
           ${pins('-', '', 'B')}
           ${pins('', '-', 'F')}
           )
-          ${fn([3.275, -5.95],
-            // { type: 'trace', dy: 1.065, side: 'F' },
+        `;
+        if (p.hotswap) {
+          output += fn([3.275, -5.95], p.from.index,
             { type: 'trace', dx: -2.184, dy: 2.184, side: 'F'},
             { type: 'via'},
             { type: 'trace', dx: -(4.37 - 2.185), side: 'B'},
             { type: 'trace', dx: -(6.56-4.37), dy: -(2.2), side:'B'},
-          )}
-          `
-          // ${newSegment([3.275, -5.95], [3.275, -5.95+1.065], 0.25, 'F', p.from.index)}
-          // ${newSegment([3.275, -5.95+1.065], [3.275-0.974, -5.95 + 1.065 + (2.039-1.065)], 0.25, 'F', p.from.index)}
-          // ${newVia([3.275-0.974, -5.95 + 1.065 + (2.039-1.065)], 0.8, 0.4, p.from.index)}
-
-          // (segment (start -0.01 0) (end -0.01 -1.065) (width 0.25) (layer "F.Cu") (net 0) (tstamp 51ab358e-822c-4517-9502-ed9a068cb596))
-          // (segment (start -0.01 -1.065) (end 0.964 -2.039) (width 0.25) (layer "F.Cu") (net 0) (tstamp 0746b36c-5461-44bd-bea1-c98c70b921cc))
-          // (via (at 0.964 -2.039) (size 0.4) (drill 0.3) (layers "F.Cu" "B.Cu") (net 0) (tstamp f32e39cc-f8af-48c8-b84e-c8df55111f1c))
-          // (segment (start 0.964 -2.039) (end 4.718 -2.039) (width 0.25) (layer "B.Cu") (net 0) (tstamp 5dfca214-272e-499c-8914-22ef1b3cfbf3))
-          // (segment (start 4.718 -2.039) (end 5.59 -1.167) (width 0.25) (layer "B.Cu") (net 0) (tstamp 8e0caa4f-7b1e-4c5a-861a-c71cacb87b86))
-          // (segment (start 5.59 -1.167) (end 5.59 0) (width 0.25) (layer "B.Cu") (net 0) (tstamp eeb6dfdc-25b1-4b81-8481-67393da08f50))
+          );
+          output += fn([8.275, -3.75], p.to.index,
+            { type: 'trace', dx: -1.875, dy: 1.875, side: 'B'},
+            { type: 'via'},
+            { type: 'trace', dx: -(5.5-1.875), side: 'F'},
+            { type: 'trace', dx: -(6.125-5.5), dy: -(-1.25+1.875), side: 'F'},
+            { type: 'trace', dx: -(10.195-6.125), side: 'F'},
+            { type: 'trace', dx: -(10.82-10.195), dy: -(-1.875+1.25), side: 'F'},
+            { type: 'trace', dx: -(14.675-10.82), side: 'F'},
+            { type: 'trace', dx: -(16.55-14.675), dy: -(0+1.875), side: 'F'}
+            );
+          return output;
+        }
       } else {
         return `
           ${standard}

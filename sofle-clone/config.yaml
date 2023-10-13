@@ -25,7 +25,7 @@ points:
         height: ky # for preview
       columns:
         outer:
-          key.column_net: P22
+          key.column_net: COuter
           rows:
             mod.skip: true
             bottom.key:
@@ -41,7 +41,7 @@ points:
               led_prev: LED_28
               led_next: LED_29
         pinky:
-          key.column_net: P26
+          key.column_net: CPinky
           rows:
             mod.skip: true
             num.key:
@@ -58,9 +58,9 @@ points:
               led_next: LED_25
         ring:
           key.stagger: 4.9
-          key.column_net: P27
+          key.column_net: CRing
           rows:
-            mod.column_net: P26
+            mod.column_net: CPinky
             mod.key:
               led_prev: LED_16
               led_next: LED_17
@@ -78,9 +78,9 @@ points:
               led_next: LED_21
         middle:
           key.stagger: 2.5
-          key.column_net: P28
+          key.column_net: CMid
           rows:
-            mod.column_net: P27
+            mod.column_net: CRing
             num.key:
               led_prev: LED_11
               led_next: LED_12
@@ -98,9 +98,9 @@ points:
               led_next: LED_16
         index:
           key.stagger: -2.5
-          key.column_net: P29
+          key.column_net: CIndex
           rows:
-            mod.column_net: P28
+            mod.column_net: CMid
             mod.key:
               led_prev: LED_6
               led_next: LED_7
@@ -118,11 +118,11 @@ points:
               led_next: LED_11
         inner:
           key.stagger: -2.5
-          key.column_net: P11
+          key.column_net: CInner
           rows:
             mod.skip: true
             num.key:
-              led_prev: P7 # This pin connects to the MCU for LED signal
+              led_prev: LED_START # This pin connects to the MCU for LED signal
               led_next: LED_1
             top.key:
               led_prev: LED_1
@@ -135,15 +135,15 @@ points:
               led_next: LED_4
       rows:
         mod:
-          row_net: P6
+          row_net: RMod
         bottom:
-          row_net: P5
+          row_net: RBottom
         home:
-          row_net: P4
+          row_net: RHome
         top:
-          row_net: P3
+          row_net: RTop
         num:
-          row_net: P2
+          row_net: RNum
     thumbs:
       key:
         padding: ky
@@ -156,7 +156,7 @@ points:
       columns:
         layer:
           key.splay: -15
-          key.column_net: P29
+          key.column_net: CIndex
           rows:
             cluster.key:
               led_prev: LED_5
@@ -166,14 +166,14 @@ points:
           key.shift: [2.5, 3]
           key.width: 1.5kx
           key.rotate: -90
-          key.column_net: P11
+          key.column_net: CInner
           rows:
             cluster.key:
               led_prev: LED_4
               led_next: LED_5
       rows:
         cluster:
-          row_net: P6
+          row_net: RMod
 outlines:
   outline: # idk tbh
     - what: rectangle
@@ -281,6 +281,21 @@ pcbs:
         params:
           side: 'B'
           VDD: 3V3
+          P2: RNum
+          P3: RTop
+          P4: RHome
+          P5: RBottom
+          P6: RMod
+          P7: LED_START
+          P8: TRS_DATA
+          P11: CInner
+          P29: CIndex
+          P28: CMid
+          P27: CRing
+          P26: CPinky
+          P22: COuter
+          P20: OLED_SDA
+          P21: OLED_SCL
       oled:
         what: oled-pretty
         params:
@@ -306,8 +321,9 @@ pcbs:
         params:
           reverse: true
           symmetric: true
-          A: P8 # Note - only supports Serial, not I2C
-          B: P8
+          # TODO - Confirm this works with TRS?
+          A: TRS_DATA # Note - only supports Serial, not I2C
+          B: TRS_DATA
           C: 3V3 # UART1 TX bottom left
           D: GND
         where:

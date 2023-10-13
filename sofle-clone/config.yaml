@@ -253,6 +253,21 @@ pcbs:
         what: promicro-ax
         params:
           VDD: 3V3
+          P2: RNum
+          P3: RTop
+          P4: RHome
+          P5: RBottom
+          P6: RMod
+          P7: LED_START
+          P8: TRS_DATA
+          P11: CInner
+          P29: CIndex
+          P28: CMid
+          P27: CRing
+          P26: CPinky
+          P22: COuter
+          P20: OLED_SDA
+          P21: OLED_SCL
         where:
           ref: main_inner_num
           shift: [1kx+mcu_offset_x, mcu_offset_y]
@@ -271,8 +286,8 @@ pcbs:
         params:
           side: 'F'
           VCC: 3V3
-          SDA: P20 # I2C SDA
-          SCL: P21 # I2C SCL
+          SDA: OLED_SDA
+          SCL: OLED_SCL
         where:
           ref: main_inner_num
           shift: [1kx+mcu_offset_x, oled_offset_y]
@@ -281,8 +296,8 @@ pcbs:
         params:
           side: 'B'
           VCC: 3V3
-          SDA: P20
-          SCL: P21
+          SDA: OLED_SDA
+          SCL: OLED_SCL
         where:
           ref: main_inner_num
           shift: [1kx+mcu_offset_x+r_mcu_offset_y, oled_offset_y + r_mcu_offset_x]

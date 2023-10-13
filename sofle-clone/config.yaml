@@ -12,7 +12,7 @@ units:
   # -8 + 2.54/2
   r_mcu_offset_x: 1.68
   r_mcu_offset_y: 1.27
-  oled_offset_y: -25
+  oled_offset_y: -26.5
 points:
   zones:
     main:
@@ -264,38 +264,26 @@ pcbs:
           rotate: -90
         params:
           side: 'B'
-      oled: # TODO: position this better. consider making a footprint where middle is 0?? or where there is silkscreen
-        what: oled
+      oled:
+        what: oled-pretty
         params:
           side: 'F'
           VCC: RAW
-          # TODO: Confirm this is correct
           SDA: P20 # I2C SDA
           SCL: P21 # I2C SCL
         where:
           ref: main_inner_num
-          shift: [1kx+6+mcu_offset_x, oled_offset_y]
-          rotate: -90
+          shift: [1kx+mcu_offset_x, oled_offset_y]
       oled-back:
-        what: oled
+        what: oled-pretty
         params:
           side: 'B'
           VCC: RAW
-          # TODO: Confirm this is correct
-          SDA: P20 # I2C SDA
-          SCL: P21 # I2C SCL
+          SDA: P20
+          SCL: P21
         where:
           ref: main_inner_num
-          shift: [1kx+6+mcu_offset_x+r_mcu_offset_y, oled_offset_y + r_mcu_offset_x]
-          rotate: -90
-      # reset: ## TODO - is this needed?
-      #   what: button
-      #   params:
-      #     from: GND
-      #     to: RST
-      #   where:
-      #     ref: main_inner_num
-      #     shift: [1kx + 1, -31]
+          shift: [1kx+mcu_offset_x+r_mcu_offset_y, oled_offset_y + r_mcu_offset_x]
       trrs:
         what: trrs
         params:

@@ -29,13 +29,13 @@ module.exports = {
             (pad SDA thru_hole circle (at ${neg}3.81 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.SDA.str})
             (pad SCL thru_hole circle (at ${neg}1.27 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.SCL.str})
             (pad VCC thru_hole circle (at ${pos}1.27 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.VCC.str})
-            (pad GND thru_hole roundrect (at ${pos}3.81 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) (roundrect_rratio 0.25) ${p.GND.str})
+            (pad GND thru_hole circle (at ${pos}3.81 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.GND.str})
             )
         `;
 
-        if (side === 'F') {
+        if (p.side === 'F') {
             return fn('', '-');
-        } else if (side === 'B') {
+        } else if (p.side === 'B') {
             return fn('-', '');
         }
     }

@@ -4,8 +4,8 @@ module.exports = {
         side: 'F',
         VCC: {type: 'net', value: 'VCC'},
         GND: {type: 'net', value: 'GND'},
-        SDA: undefined,
-        SCL: undefined
+        SDA: {type: 'net', value: 'SDA'},
+        SCL: {type: 'net', value: 'SCL'}
     },
     body: p => {
         const fn = (pos, neg) => `
@@ -26,10 +26,10 @@ module.exports = {
             (fp_line (start -5 -1.27) (end 5 -1.27) (layer ${p.side}.SilkS) (width 0.25))
 
             ${'' /* Header pins */}
-            (pad SDA thru_hole circle (at ${neg}3.81 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
-            (pad SCL thru_hole circle (at ${neg}1.27 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
-            (pad VCC thru_hole circle (at ${pos}1.27 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
-            (pad GND thru_hole roundrect (at ${pos}3.81 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) (roundrect_rratio 0.25))
+            (pad SDA thru_hole circle (at ${neg}3.81 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.SDA.str})
+            (pad SCL thru_hole circle (at ${neg}1.27 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.SCL.str})
+            (pad VCC thru_hole circle (at ${pos}1.27 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.VCC.str})
+            (pad GND thru_hole roundrect (at ${pos}3.81 0 ${p.rot}) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) (roundrect_rratio 0.25) ${p.GND.str})
             )
         `;
 

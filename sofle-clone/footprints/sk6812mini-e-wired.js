@@ -101,14 +101,14 @@ module.exports = {
           (stroke (width 0.12) (type solid)) (layer "Edge.Cuts"))
 
         ${'' /* Solder Pads */}
-        (pad "DIN" smd rect (at 2.55 -0.75) (size 1.7 0.82) (layers "B.Cu" "B.Paste" "B.Mask") ${p.DIN.str})
-        (pad "DIN" smd rect (at 2.55 0.75) (size 1.7 0.82) (layers "F.Cu" "F.Paste" "F.Mask") ${p.DIN.str})
-        (pad "DOUT" smd rect (at -2.55 -0.75) (size 1.7 0.82) (layers "F.Cu" "F.Paste" "F.Mask") ${p.DOUT.str})
-        (pad "DOUT" smd rect (at -2.55 0.75) (size 1.7 0.82) (layers "B.Cu" "B.Paste" "B.Mask") ${p.DOUT.str})
-        (pad "GND" smd rect (at 2.55 -0.75) (size 1.7 0.82) (layers "F.Cu" "F.Paste" "F.Mask") ${p.GND.str})
-        (pad "GND" smd rect (at 2.55 0.75) (size 1.7 0.82) (layers "B.Cu" "B.Paste" "B.Mask") ${p.GND.str})
-        (pad "VDD" smd rect (at -2.55 -0.75) (size 1.7 0.82) (layers "B.Cu" "B.Paste" "B.Mask") ${p.VDD.str})
-        (pad "VDD" smd rect (at -2.55 0.75) (size 1.7 0.82) (layers "F.Cu" "F.Paste" "F.Mask") ${p.VDD.str})
+        (pad "DIN" smd rect (at 2.55 -0.75 ${p.rot}) (size 1.7 0.82) (layers "B.Cu" "B.Paste" "B.Mask") ${p.DIN.str})
+        (pad "DIN" smd rect (at 2.55 0.75 ${p.rot}) (size 1.7 0.82) (layers "F.Cu" "F.Paste" "F.Mask") ${p.DIN.str})
+        (pad "DOUT" smd rect (at -2.55 -0.75 ${p.rot}) (size 1.7 0.82) (layers "F.Cu" "F.Paste" "F.Mask") ${p.DOUT.str})
+        (pad "DOUT" smd rect (at -2.55 0.75 ${p.rot}) (size 1.7 0.82) (layers "B.Cu" "B.Paste" "B.Mask") ${p.DOUT.str})
+        (pad "GND" smd rect (at 2.55 -0.75 ${p.rot}) (size 1.7 0.82) (layers "F.Cu" "F.Paste" "F.Mask") ${p.GND.str})
+        (pad "GND" smd rect (at 2.55 0.75 ${p.rot}) (size 1.7 0.82) (layers "B.Cu" "B.Paste" "B.Mask") ${p.GND.str})
+        (pad "VDD" smd rect (at -2.55 -0.75 ${p.rot}) (size 1.7 0.82) (layers "B.Cu" "B.Paste" "B.Mask") ${p.VDD.str})
+        (pad "VDD" smd rect (at -2.55 0.75 ${p.rot}) (size 1.7 0.82) (layers "F.Cu" "F.Paste" "F.Mask") ${p.VDD.str})
       )
     `;
 

@@ -104,8 +104,8 @@ module.exports = {
             (pad "" np_thru_hole circle (at 0 -5.95) (size 3 3) (drill 3) (layers *.Cu *.Mask))
 
             ${'' /* net pads */}
-            (pad 1 smd rect (at ${def_neg}3.275 -5.95 ${p.r ?? 0}) (size 2.6 2.6) (layers ${def_side}.Cu ${def_side}.Paste ${def_side}.Mask)  ${p.from.str})
-            (pad 2 smd rect (at ${def_pos}8.275 -3.75 ${p.r ?? 0}) (size 2.6 2.6) (layers ${def_side}.Cu ${def_side}.Paste ${def_side}.Mask)  ${p.to.str})
+            (pad 1 smd rect (at ${def_neg}3.275 -5.95 ${p.rot ?? 0}) (size 2.6 2.6) (layers ${def_side}.Cu ${def_side}.Paste ${def_side}.Mask)  ${p.from.str})
+            (pad 2 smd rect (at ${def_pos}8.275 -3.75 ${p.rot ?? 0}) (size 2.6 2.6) (layers ${def_side}.Cu ${def_side}.Paste ${def_side}.Mask)  ${p.to.str})
           `
         } else {
             return `
@@ -115,6 +115,7 @@ module.exports = {
             `
         }
       }
+      console.log(p);
       if(p.reverse) {
         let output =  `
           ${standard}

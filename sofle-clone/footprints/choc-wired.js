@@ -23,13 +23,7 @@ module.exports = {
     },
     body: p => {
       const newSegment = (start, end, width, layer, net) => `(segment (start ${getPosition(start[0], start[1])}) (end ${getPosition(end[0], end[1])}) (width ${width}) (layer ${layer}.Cu) (net ${net}))`
-      const newVia = (at, size, drill, net) => `(via
-        (at ${getPosition(at[0], at[1])} )
-        (size ${size})
-        (drill ${drill})
-        (layers F.Cu B.Cu)
-        (net ${net})
-      )`;
+      const newVia = (at, size, drill, net) => `(via (at ${getPosition(at[0], at[1])}) (size ${size}) (drill ${drill}) (layers F.Cu B.Cu) (net ${net}))`;
 
       const getPosition = (x, y) => {
 
@@ -63,7 +57,7 @@ module.exports = {
             x += curr.dx ?? 0;
             y += curr.dy ?? 0;
           } else if (curr.type === 'via') {
-            output += newVia([x, y], 0.8, 0.4, p.from.index);
+            output += newVia([x, y], 0.8, 0.4, net);
           }
           output += '\n';
         });

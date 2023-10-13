@@ -228,16 +228,15 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}"
       rgb:
-        what: sk6812mini-e
+        what: sk6812mini-e-wired
         where: true
         adjust:
           shift: [0, 4.5]
         params:
-          reversible: true
-          reverse_mount: true
-          P1: RAW
-          P2: "{{key.led_next}}"
-          P4: "{{key.led_prev}}"
+          VDD: RAW
+          GND: GND
+          DOUT: "{{key.led_next}}"
+          DIN: "{{key.led_prev}}"
       diode:
         what: combo-diode
         where: true

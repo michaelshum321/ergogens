@@ -251,6 +251,8 @@ pcbs:
           rotate: -90
       promicro2:
         what: promicro-ax
+        params:
+          VDD: 3V3
         where:
           ref: main_inner_num
           shift: [1kx+mcu_offset_x, mcu_offset_y]
@@ -263,11 +265,12 @@ pcbs:
           rotate: -90
         params:
           side: 'B'
+          VDD: 3V3
       oled:
         what: oled-pretty
         params:
           side: 'F'
-          VCC: RAW
+          VCC: 3V3
           SDA: P20 # I2C SDA
           SCL: P21 # I2C SCL
         where:
@@ -277,7 +280,7 @@ pcbs:
         what: oled-pretty
         params:
           side: 'B'
-          VCC: RAW
+          VCC: 3V3
           SDA: P20
           SCL: P21
         where:
@@ -290,7 +293,7 @@ pcbs:
           symmetric: true
           A: P8 # Note - only supports Serial, not I2C
           B: P8
-          C: VDD # UART1 TX bottom left
+          C: 3V3 # UART1 TX bottom left
           D: GND
         where:
           ref: main_inner_num

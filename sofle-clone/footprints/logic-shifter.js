@@ -13,10 +13,10 @@ module.exports = {
     const output = `
     (module 74AHCT1G125 (layer F.Cu) (tedit 6529E730)
       ${p.at /* position */}
-      (fp_text reference REF** (at 0 2 ${p.rot}) (layer F.SilkS)
+      (fp_text reference ${p.ref} (at 0 2 ${p.rot}) (layer F.SilkS) ${p.ref_hide}
         (effects (font (size 1 1) (thickness 0.15)))
       )
-      (fp_text value 74AHCT1G125 (at 0 -2 ${p.rot}) (layer F.Fab)
+      (fp_text value "" (at 0 -2 ${p.rot}) (layer F.Fab)
         (effects (font (size 1 1) (thickness 0.15)))
       )
       ${'' /* Front side */}
@@ -28,12 +28,12 @@ module.exports = {
       (pad VCC smd rect (at 1.3 -0.95 ${p.rot}) (size 1.1 0.6) (layers F.Cu F.Paste F.Mask) ${p.RAW.str})
       (pad DOUT smd rect (at 1.3 0.95 ${p.rot}) (size 1.1 0.6) (layers F.Cu F.Paste F.Mask) ${p.DOUT.str})
 
-      ${'' /* Back side */}
+      ${'' /* Back side */ }
       (fp_circle (center 0 -1.3) (end 0.4 -1.3) (layer B.SilkS) (width 0.25))
       (pad GND smd rect (at -1.3 -0.95 ${p.rot}) (size 1.1 0.6) (layers B.Cu B.Paste B.Mask) ${p.GND.str})
       (pad DIN smd rect (at -1.3 0 ${p.rot}) (size 1.1 0.6) (layers B.Cu B.Paste B.Mask) ${p.DIN.str})
       (pad GND smd rect (at -1.3 0.95 ${p.rot}) (size 1.1 0.6) (layers B.Cu B.Paste B.Mask) ${p.GND.str})
-      (pad VCC smd rect (at 1.3 -0.95 ${p.rot}) (size 1.1 0.6) (layers B.Cu B.Paste B.Mask) ${p.VCC.str})
+      (pad VCC smd rect (at 1.3 -0.95 ${p.rot}) (size 1.1 0.6) (layers B.Cu B.Paste B.Mask) ${p.RAW.str})
       (pad DOUT smd rect (at 1.3 0.95 ${p.rot}) (size 1.1 0.6) (layers B.Cu B.Paste B.Mask) ${p.DOUT.str})
     )
     `;

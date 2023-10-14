@@ -122,7 +122,7 @@ points:
           rows:
             mod.skip: true
             num.key:
-              led_prev: LED_START # This pin connects to the MCU for LED signal
+              led_prev: LED_START_5V # This pin connects to the LogicShifter for 5V LED signal
               led_next: LED_1
             top.key:
               led_prev: LED_1
@@ -258,7 +258,7 @@ pcbs:
           P4: RHome
           P5: RBottom
           P6: RMod
-          P7: LED_START
+          P7: LED_START_3V3
           P8: TRS_DATA
           P11: CInner
           P29: CIndex
@@ -286,7 +286,7 @@ pcbs:
           P4: RHome
           P5: RBottom
           P6: RMod
-          P7: LED_START
+          P7: LED_START_3V3
           P8: TRS_DATA
           P11: CInner
           P29: CIndex
@@ -296,6 +296,15 @@ pcbs:
           P22: COuter
           P20: OLED_SDA
           P21: OLED_SCL
+      logic-shifter:
+        what: logic-shifter
+        where:
+          ref: main_inner_num
+          shift: [0, 12]
+          rotate: 180
+        params:
+          DIN: LED_START_3V3
+          DOUT: LED_START_5V
       oled:
         what: oled-pretty
         params:

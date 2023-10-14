@@ -11,8 +11,6 @@ module.exports = {
     GND: {type: 'net', value: 'GND'},
     DIN: undefined,
     DOUT: undefined
-    // DIN: {type: 'net', value: 'DIN'},
-    // DOUT: {type: 'net', value: 'DOUT'}
   },
   body: p => {
     const newSegment = (start, end, width, layer, net) => `(segment (start ${getPosition(start[0], start[1])}) (end ${getPosition(end[0], end[1])}) (width ${width}) (layer ${layer}.Cu) (net ${net}))`
@@ -40,7 +38,7 @@ module.exports = {
       nx = (cos * (x)) + (sin * (y)) + atX,
       ny = (cos * (y)) - (sin * (x)) + atY;
 
-      const point_str = `${nx.toFixed(2)} ${ny.toFixed(2)}`;
+      const point_str = `${nx.toFixed(4)} ${ny.toFixed(4)}`;
       return point_str;
     }
 
@@ -120,11 +118,11 @@ module.exports = {
       { type: 'trace', dx: -2.55+3.25, side: 'B'}
     );
 
-    const vdd = fn({ start: [-2.55, 0.75], net: p.VDD.index, traceWidth: 0.5 },
-      { type: 'trace', dx: -4.7 + 2.55, side: 'F' },
+    const vdd = fn({ start: [-2.55, 0.85], net: p.VDD.index, traceWidth: 0.5 },
+      { type: 'trace', dx: -5 + 2.55, side: 'F' },
       { type: 'via'},
-      { type: 'trace', dy: -0.75*2, side: 'B'},
-      { type: 'trace', dx: -2.55+4.7, side: 'B'}
+      { type: 'trace', dy: -0.85*2, side: 'B'},
+      { type: 'trace', dx: -2.55+5, side: 'B'}
     );
 
     const din = fn({ start: [2.55, -0.75], net: p.DOUT.index },
@@ -135,11 +133,11 @@ module.exports = {
       { type: 'trace', dx: 2.55-3.25, side: 'F'}
     );
 
-    const gnd = fn({ start: [2.55, -0.75], net: p.VDD.index, traceWidth: 0.5 },
-      { type: 'trace', dx: 4.7 - 2.55, side: 'F' },
+    const gnd = fn({ start: [2.55, -0.85], net: p.VDD.index, traceWidth: 0.5 },
+      { type: 'trace', dx: 5 - 2.55, side: 'F' },
       { type: 'via'},
-      { type: 'trace', dy: 0.75*2, side: 'B'},
-      { type: 'trace', dx: 2.55-4.7, side: 'B'}
+      { type: 'trace', dy: 0.85*2, side: 'B'},
+      { type: 'trace', dx: 2.55-5, side: 'B'}
     );
 
     standard += dout;

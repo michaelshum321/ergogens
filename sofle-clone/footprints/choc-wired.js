@@ -132,14 +132,14 @@ module.exports = {
             { type: 'trace', dx: -(6.56-4.37), dy: -(2.2), side:'B'},
           );
           output += fn([8.275, -3.75], p.to.index,
-            { type: 'trace', dx: -1.875, dy: 1.875, side: 'B'},
+            { type: 'trace', dx: -1.875, dy: 1.895, side: 'B'},
             { type: 'via'},
             { type: 'trace', dx: -(5.5-1.875), side: 'F'},
-            { type: 'trace', dx: -(6.125-5.5), dy: -(-1.25+1.875), side: 'F'},
+            { type: 'trace', dx: -(6.125-5.5), dy: -(-1.25+1.895), side: 'F'},
             { type: 'trace', dx: -(10.195-6.125), side: 'F'},
-            { type: 'trace', dx: -(10.82-10.195), dy: -(-1.875+1.25), side: 'F'},
+            { type: 'trace', dx: -(10.82-10.195), dy: -(-1.895+1.25), side: 'F'},
             { type: 'trace', dx: -(14.675-10.82), side: 'F'},
-            { type: 'trace', dx: -(16.55-14.675), dy: -(0+1.875), side: 'F'}
+            { type: 'trace', dx: -(16.55-14.675), dy: -(0+1.895), side: 'F'}
             );
           return output;
         }

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx ergogen sofle-clone",
     "bo": "yarn build && open -a pcbnew output/pcbs/main_pcb.kicad_pcb",
-    "build-open": "yarn bo"
+    "build-open": "yarn bo",
+    "o": "open -a pcbnew output/pcbs/main_pcb.kicad_pcb"
   },
   "keywords": [
     "ergogen",

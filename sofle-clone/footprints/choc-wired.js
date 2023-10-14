@@ -115,7 +115,7 @@ module.exports = {
             `
         }
       }
-      console.log(p);
+
       if(p.reverse) {
         let output =  `
           ${standard}

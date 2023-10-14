@@ -53,7 +53,7 @@ module.exports = {
 
       args.forEach((curr) => {
         if (curr.type === 'trace') {
-          output += newSegment([x, y], [x+(curr.dx ?? 0), y+(curr.dy ?? 0)], 0.25, curr.side, net);
+          output += newSegment([x, y], [x+(curr.dx ?? 0), y+(curr.dy ?? 0)], traceWidth, curr.side, net);
           x += curr.dx ?? 0;
           y += curr.dy ?? 0;
         } else if (curr.type === 'via') {
